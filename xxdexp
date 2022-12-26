@@ -1,0 +1,25 @@
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window = Library.CreateLib("blox exp anim sim xd ez :skull:", "Midnight")
+
+
+    --Main
+    local  CoinTab = Window:NewTab("Coin/exp")
+    local  CoinSection = CoinTab:NewSection("Coin/Exp Farm")
+
+    CoinSection:NewToggle("Coin/Exp Farm", "farms coins for exp", function(state)
+        if state then
+            _G.loop = true
+            while _G.loop == true do wait()
+                print("Toggle on")
+    
+                game:GetService("ReplicatedStorage").Events.CoinEvent:FireServer()
+            end
+        else
+            _G.loop = false
+            while _G.loop do wait()
+                print("Toggle off")
+    
+                game:GetService("ReplicatedStorage").Events.CoinEvent:FireServer()
+            end
+        end
+    end)
